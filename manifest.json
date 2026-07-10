@@ -1,0 +1,9 @@
+{
+  "name": "Dispatch Pilot",
+  "short_name": "Dispatch",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f6f4ef",
+  "theme_color": "#103a35",
+  "description": "Fair transport dispatch planning for sand and quarry loads."
+}
