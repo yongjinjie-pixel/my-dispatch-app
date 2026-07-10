@@ -1,7 +1,7 @@
 {
   "name": "Dispatch Pilot",
   "short_name": "Dispatch",
-  "start_url": "./index.html",
+  "start_url": "/my-dispatch-app/index.html",
   "display": "standalone",
   "background_color": "#0d1621",
   "theme_color": "#0a1e36",
