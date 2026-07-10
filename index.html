@@ -3,27 +3,37 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <!-- Dark status bar color matching your corporate theme -->
   <meta name="theme-color" content="#0a1e36">
   <meta name="description" content="Phone-first fair dispatch planning for sand and quarry delivery trucks.">
   <link rel="manifest" href="manifest.json">
-  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="styles.css">
   <title>Dispatch Pilot</title>
 </head>
 <body>
   <div id="app"></div>
   <script type="module" src="./app.js"></script>
 
-  <!-- PWA Service Worker Registration Script Required by Chrome -->
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
         navigator.serviceWorker.register('sw.js')
-          .then(reg => console.log('Service Worker registered successfully:', reg.scope))
-          .catch(err => console.error('Service Worker registration failed:', err));
+          .then(reg => {
+            console.log('Service Worker ready:', reg.scope);
+            
+            // Listen for the auto-update flag from sw.js
+            reg.addEventListener('updatefound', () => {
+              const newWorker = reg.installing;
+              newWorker.addEventListener('statechange', () => {
+                if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                  // Instantly reload the window to apply new colors/code
+                  window.location.reload();
+                }
+              });
+            });
+          })
+          .catch(err => console.error('Registration failed:', err));
       });
     }
   </script>
 </body>
 </html>
-
