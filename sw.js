@@ -1,5 +1,3 @@
-const CACHE_NAME = 'dispatch-pilot-v3';
-
 self.addEventListener('install', (event) => {
   self.skipWaiting();
 });
