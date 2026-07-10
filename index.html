@@ -2,36 +2,33 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="theme-color" content="#0a1e36">
   <meta name="description" content="Phone-first fair dispatch planning for sand and quarry delivery trucks.">
-  <link rel="manifest" href="manifest2.json">
+  <link rel="manifest" href="manifest.json">
   <link rel="stylesheet" href="styles.css">
   <title>Dispatch Pilot</title>
 </head>
 <body>
   <div id="app"></div>
-  <script type="module" src="./app.js"></script>
+  <script type="module" src="app.js"></script>
 
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
         navigator.serviceWorker.register('sw.js')
           .then(reg => {
-            console.log('Service Worker ready:', reg.scope);
-            
-            // Listen for the auto-update flag from sw.js
+            console.log('SW active:', reg.scope);
             reg.addEventListener('updatefound', () => {
               const newWorker = reg.installing;
               newWorker.addEventListener('statechange', () => {
                 if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-                  // Instantly reload the window to apply new colors/code
                   window.location.reload();
                 }
               });
             });
           })
-          .catch(err => console.error('Registration failed:', err));
+          .catch(err => console.error('SW error:', err));
       });
     }
   </script>
