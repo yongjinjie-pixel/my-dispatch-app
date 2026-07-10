@@ -6,7 +6,7 @@
   <!-- Dark status bar color matching your corporate theme -->
   <meta name="theme-color" content="#0a1e36">
   <meta name="description" content="Phone-first fair dispatch planning for sand and quarry delivery trucks.">
-  <link rel="manifest" href="./manifest.json">
+  <link rel="manifest" href="manifest.json">
   <link rel="stylesheet" href="./styles.css">
   <title>Dispatch Pilot</title>
 </head>
@@ -18,7 +18,7 @@
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('./sw.js')
+        navigator.serviceWorker.register('sw.js')
           .then(reg => console.log('Service Worker registered successfully:', reg.scope))
           .catch(err => console.error('Service Worker registration failed:', err));
       });
